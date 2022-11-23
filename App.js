@@ -8,7 +8,7 @@ export default function App() {
         <TextInput  style={styles.textInput} placeholder='Enter a message'/>
         <Button title='Save'/>
       </View>
-      <View style = {{paddingTop : 20}}>
+      <View style = {styles.messageContainer}>
         <Text>List Of Messages....</Text>
       </View>
     </View>
@@ -17,17 +17,26 @@ export default function App() {
 
 const styles = StyleSheet.create({
     appContainer : {
-      padding : 16,
-      paddingTop:100
+      flex : 1,
+      paddingHorizontal : 16,
+      paddingTop:50
     },
     inputContainer : {
+      flex : 1,
       flexDirection : "row",
-      justifyContent : "space-between"
-      
+      justifyContent : "space-between",
+      alignItems : 'center',
+      marginBottom : 20,
+      borderBottomWidth : 1,  
+      borderBottomColor : 'gray'
     },
     textInput : {
       borderWidth : 1,
       borderColor : "#cccccc",
-      width : "80%"
+      width : "80%",
+      padding : 8
+    },
+    messageContainer : {
+      flex : 9
     }
 });
