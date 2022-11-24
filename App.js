@@ -9,6 +9,7 @@ import {
   ScrollView,
   FlatList,
 } from "react-native";
+import MessageItem from "./components/MessageItem";
 
 export default function App() {
   const [enteredMessage, setMessage] = useState("");
@@ -41,11 +42,9 @@ export default function App() {
         <FlatList
           data={messageArr}
           renderItem={(itemData) => {
-            itemData.index;
+
             return (
-              <View style={styles.messageItem}>
-                <Text style={styles.messageText}>{itemData.item.text}</Text>
-              </View>
+             <MessageItem text={itemData.item.text}/>
             );
           }}
           keyExtractor={(item,index) => {
@@ -82,13 +81,5 @@ const styles = StyleSheet.create({
   messageContainer: {
     flex: 9,
   },
-  messageItem: {
-    margin: 8,
-    padding: 8,
-    borderRadius: 6,
-    backgroundColor: "#5e0acc",
-  },
-  messageText: {
-    color: "white",
-  },
+  
 });
