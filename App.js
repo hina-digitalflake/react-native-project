@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import { StyleSheet, Text, View, Button, TextInput, ScrollView } from "react-native";
 
 export default function App() {
   const [enteredMessage, setMessage] = useState("");
@@ -27,11 +27,13 @@ export default function App() {
       </View>
       <View style={styles.messageContainer}>
         <Text>List Of Messages....</Text>
+        <ScrollView alwaysBounceVertical={false}>
         {messageArr.map((msg) => (          
         <View style={styles.messageItem} key={msg}>
             <Text style={styles.messageText}>{msg}</Text>
           </View>
         ))}
+        </ScrollView>
       </View>
     </View>
   );
