@@ -7,8 +7,10 @@ function MessageInput(props) {
     setMessage(enteredText);
   }
   function saveMessageHandler() {
+   if(enteredMessage != ""){
     props.onMessageAdd(enteredMessage);
     setMessage("");
+   }
   }
   return (
     <View style={styles.inputContainer}>
