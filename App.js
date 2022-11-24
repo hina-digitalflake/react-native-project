@@ -1,6 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, Text, View, Button, TextInput, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  ScrollView,
+  FlatList,
+} from "react-native";
 
 export default function App() {
   const [enteredMessage, setMessage] = useState("");
@@ -12,7 +20,10 @@ export default function App() {
 
   function saveMessageHandler() {
     // console.log(enteredMessage);
-    setMessageArr((currentArr) => [...currentArr, enteredMessage]);
+    setMessageArr((currentArr) => [
+      ...currentArr,
+      { text: enteredMessage, id: Math.random().toString() },
+    ]);
   }
 
   return (
@@ -27,13 +38,21 @@ export default function App() {
       </View>
       <View style={styles.messageContainer}>
         <Text>List Of Messages....</Text>
-        <ScrollView alwaysBounceVertical={false}>
-        {messageArr.map((msg) => (          
-        <View style={styles.messageItem} key={msg}>
-            <Text style={styles.messageText}>{msg}</Text>
-          </View>
-        ))}
-        </ScrollView>
+        <FlatList
+          data={messageArr}
+          renderItem={(itemData) => {
+            itemData.index;
+            return (
+              <View style={styles.messageItem}>
+                <Text style={styles.messageText}>{itemData.item.text}</Text>
+              </View>
+            );
+          }}
+          keyExtractor={(item,index) => {
+            return item.id
+          }}
+          alwaysBounceVertical={false}
+        />
       </View>
     </View>
   );
@@ -69,7 +88,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     backgroundColor: "#5e0acc",
   },
-  messageText : {
+  messageText: {
     color: "white",
-  }
+  },
 });
