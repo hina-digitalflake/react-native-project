@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import MessageItem from "./components/MessageItem";
 import MessageInput from "./components/MessageInput";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   const [isModelVisible, setModalVisibility] = useState(false);
@@ -39,10 +40,12 @@ export default function App() {
   }
 
   return (
+    <>
+    <StatusBar style='light '/>
     <View style={styles.appContainer}>
       <Button
-        title="Add New Role"
-        color="#5e0acc"
+        title="Add New Message"
+        color="#a065ac"
         onPress={showMessageModalHandler}
       />
       <MessageInput
@@ -51,7 +54,6 @@ export default function App() {
         onCancelModal={dismissModalHandler}
       />
       <View style={styles.messageContainer}>
-        <Text>List Of Messages....</Text>
         <FlatList
           data={messageArr}
           renderItem={(itemData) => {
@@ -70,6 +72,7 @@ export default function App() {
         />
       </View>
     </View>
+    </>
   );
 }
 
@@ -78,6 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     paddingTop: 50,
+    backgroundColor : "#1e0850",
   },
 
   messageContainer: {
