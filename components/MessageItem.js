@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 
 function MessageItem (props) {
   return (
-    <View style={styles.messageItem}>
+    <Pressable onPress={props.onDeleteItem.bind(this, props.id)}>
+       <View style={styles.messageItem}>
       <Text style={styles.messageText}>{props.text}</Text>
     </View>
+    </Pressable>
   );
 }
 

@@ -21,6 +21,13 @@ export default function App() {
     ]);
   }
 
+  function deleteMessageHandler(id){
+    // console.log("deleted",i.id);
+    setMessageArr(currentArr => {
+      return currentArr.filter((msg) => msg.id !== id);
+    })
+  }
+
   return (
     <View style={styles.appContainer}>
       <MessageInput onMessageAdd={saveMessageHandler} />
@@ -29,7 +36,7 @@ export default function App() {
         <FlatList
           data={messageArr}
           renderItem={(itemData) => {
-            return <MessageItem text={itemData.item.text} />;
+            return <MessageItem text={itemData.item.text}  id={itemData.item.id} onDeleteItem={deleteMessageHandler}/>;
           }}
           keyExtractor={(item, index) => {
             return item.id;
