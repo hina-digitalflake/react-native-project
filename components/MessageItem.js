@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Pressable } from "react-native";
 
 function MessageItem(props) {
   return (
-    <View style={styles.messageItem}>
+          <View style={styles.messageItem}>
       <Pressable
         android_ripple={{ color: "#210644" }}
         onPress={props.onDeleteItem.bind(this, props.id)}
@@ -10,6 +10,7 @@ function MessageItem(props) {
         <Text style={styles.messageText}>{props.text}</Text>
       </Pressable>
     </View>
+
   );
 }
 
